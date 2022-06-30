@@ -26,17 +26,21 @@ def load_data(filename):
         v = round(float(v), 2)
         locations[l].append((t, v))
 
-def make_graph():
+def make_graph(filename = None):
     for location in locations.keys():
         spt = (zip(*locations[location]))
         plt.plot(*spt, label=location)
     plt.xticks(rotation=90)
     plt.grid(axis='y')
     plt.legend()
-    plt.show()
+
+    if filename is None:
+        plt.show()
+    else:
+        plt.savefig(fname=filename, dpi=300)
 
 
-def make_bounded_graph(start, end):
+def make_bounded_graph(start, end, filename=None):
     for location in locations.keys():
         data = locations[location]
         data = [datum for datum in data if start <= datum[0] < end]
@@ -45,7 +49,11 @@ def make_bounded_graph(start, end):
     plt.xticks(rotation = 90)
     plt.grid(axis='y')
     plt.legend()
-    plt.show()
+
+    if filename is None:
+        plt.show()
+    else:
+        plt.savefig(fname=filename, dpi=300)
 
 def load_all():
     global filenames
@@ -55,17 +63,22 @@ def load_all():
 
 
 if __name__ == "__main__":
-    print(sys.argv)
-    start = 1656608500
-    end = 1656609000
-    try: start = int(sys.argv[1])
-    except: pass
-    try: end = int(sys.argv[2])
-    except: pass
+    bounded = False
 
-    start = datetime.datetime.fromtimestamp(start)
-    end = datetime.datetime.fromtimestamp(end)
+    try: filename = sys.argv[1]
+    except: filename = "graph.png"
+
+    if len(sys.argv) > 2:
+        try: start = int(sys.argv[2])
+        except: pass
+        try: end = int(sys.argv[3])
+        except: pass
+        bounded = True
+        start = datetime.datetime.fromtimestamp(start)
+        end = datetime.datetime.fromtimestamp(end)
 
     load_all()
-    make_bounded_graph(start, end)
-    make_graph()
+    if bounded:
+        make_bounded_graph(start, end, filename)
+    else:
+        make_graph(filename)
