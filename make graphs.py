@@ -2,6 +2,7 @@ from matplotlib import pyplot as plt
 from collections import defaultdict
 import datetime
 import os
+import sys
 
 locations = defaultdict(lambda :[])
 filenames = []
@@ -29,6 +30,8 @@ def make_graph():
     for location in locations.keys():
         spt = (zip(*locations[location]))
         plt.plot(*spt, label=location)
+    plt.xticks(rotation=90)
+    plt.grid(axis='y')
     plt.legend()
     plt.show()
 
@@ -39,6 +42,8 @@ def make_bounded_graph(start, end):
         data = [datum for datum in data if start <= datum[0] < end]
         spt = (zip(*data))
         plt.plot(*spt, label=location)
+    plt.xticks(rotation = 90)
+    plt.grid(axis='y')
     plt.legend()
     plt.show()
 
@@ -50,8 +55,16 @@ def load_all():
 
 
 if __name__ == "__main__":
-    start = datetime.datetime.fromtimestamp(1656608500)
-    end = datetime.datetime.fromtimestamp(1656609000)
+    print(sys.argv)
+    start = 1656608500
+    end = 1656609000
+    try: start = int(sys.argv[1])
+    except: pass
+    try: end = int(sys.argv[2])
+    except: pass
+
+    start = datetime.datetime.fromtimestamp(start)
+    end = datetime.datetime.fromtimestamp(end)
 
     load_all()
     make_bounded_graph(start, end)
