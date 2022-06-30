@@ -67,6 +67,7 @@ def load_all():
     filenames = get_all_filenames()
     for f in filenames:
         load_data(f)
+        print(f)
 
 
 if __name__ == "__main__":
