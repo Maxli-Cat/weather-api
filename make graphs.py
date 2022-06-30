@@ -4,6 +4,7 @@ import datetime
 import os
 import sys
 import platform
+import time
 
 locations = defaultdict(lambda :[])
 filenames = []
@@ -80,16 +81,23 @@ if __name__ == "__main__":
     except: filename = "graph.png"
 
     if len(sys.argv) > 2:
+        start = int(time.time()) - (24 * 60 * 60)
+        end = int(time.time())
+        bounded = True
+
+    if len(sys.argv) > 3:
         try: start = int(sys.argv[2])
         except: pass
         try: end = int(sys.argv[3])
         except: pass
         bounded = True
-        start = datetime.datetime.fromtimestamp(start)
-        end = datetime.datetime.fromtimestamp(end)
+
+
 
     load_all()
     if bounded:
+        start = datetime.datetime.fromtimestamp(start)
+        end = datetime.datetime.fromtimestamp(end)
         make_bounded_graph(start, end, filename)
     else:
         make_graph(filename)
