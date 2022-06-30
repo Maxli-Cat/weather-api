@@ -42,7 +42,7 @@ def on_message(client, userdata, msg):
     lv = Datum(ts, topic, info)
     messages.put(lv)
 
-def log_message(filename="logs\\file.csv"):
+def log_message(filename="log.csv"):
     file = open(filename,'a+')
     msgs = 0
     while True:
