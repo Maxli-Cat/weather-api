@@ -36,6 +36,7 @@ def load_data(filename):
 
 def make_graph(filename = None):
     for location in locations.keys():
+        locations[location].sort(key=lambda x:x[0])
         spt = (zip(*locations[location]))
         plt.plot(*spt, label=location)
     plt.xticks(rotation=90)
@@ -50,6 +51,7 @@ def make_graph(filename = None):
 
 def make_bounded_graph(start, end, filename=None):
     for location in locations.keys():
+        locations[location].sort(key=lambda x: x[0])
         data = locations[location]
         data = [datum for datum in data if start <= datum[0] < end]
         spt = (zip(*data))
