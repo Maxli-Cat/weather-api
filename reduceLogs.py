@@ -1,7 +1,7 @@
 import time, datetime
 import platform
 
-BLOCK_SIZE = 30
+BLOCK_SIZE = 300
 
 class DataPoint:
     def __init__(self, time, catagory, value):
