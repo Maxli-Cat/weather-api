@@ -46,7 +46,7 @@ def make_graph(filename = None):
     if filename is None:
         plt.show()
     else:
-        plt.savefig(fname=filename, dpi=150)
+        plt.savefig(fname=filename, dpi=450)
 
 
 def make_bounded_graph(start, end, filename=None):
@@ -63,7 +63,7 @@ def make_bounded_graph(start, end, filename=None):
     if filename is None:
         plt.show()
     else:
-        plt.savefig(fname=filename, dpi=150)
+        plt.savefig(fname=filename, dpi=450)
 
 def load_all():
     global filenames
