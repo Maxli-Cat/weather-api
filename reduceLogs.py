@@ -83,7 +83,8 @@ def save_to_disk():
     start = min([i.start for i in datatimes])
     end = max([i.end for i in datatimes])
 
-    filename = f"//home//maxli//weather-api//summaries//{start}-{end}.csv"
+    #filename = f"//home//maxli//weather-api//summaries//{start}-{end}.csv"
+    filename = f"summaries//{start}-{end}.csv"
 
     f = open(filename, 'w')
     for dt in datatimes:
@@ -92,6 +93,6 @@ def save_to_disk():
 
 
 if __name__ == "__main__":
-    readFile()
+    readFile("log.csv")
     convert_to_datatimes()
     save_to_disk()

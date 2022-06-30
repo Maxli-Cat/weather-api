@@ -3,15 +3,22 @@ from collections import defaultdict
 import datetime
 import os
 import sys
+import platform
 
 locations = defaultdict(lambda :[])
 filenames = []
 
-def get_all_filenames(path="summaries\\"):
+def get_all_filenames(path=None):
+    if path is None:
+        if platform.system() == "Windows": path="summaries\\"
+        else: path = "//home//maxli//weather-api//summaries"
     names = [f"{path}{name}" for name in os.listdir(path) if os.path.isfile(f"{path}{name}")]
     return names
 
-def get_bounded_filenames(start, end, path="summaries\\"):
+def get_bounded_filenames(start, end, path=None):
+    if path is None:
+        if platform.system() == "Windows": path="summaries\\"
+        else: path = "//home//maxli//weather-api//summaries"
     names = [name for name in os.listdir(path) if os.path.isfile(f"{path}{name}")]
     starts, ends = zip(*[name.split('.')[0].split('-') for name in names])
     print(starts, ends)
