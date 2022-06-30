@@ -1,5 +1,7 @@
 import time, datetime
 
+BLOCK_SIZE = 30
+
 class DataPoint:
     def __init__(self, time, catagory, value):
         self.time = float(time)
@@ -46,7 +48,7 @@ names = {
     "/temp/11":"Basement"
 }
 
-def readFile(filename="logs//file.csv"):
+def readFile(filename="log.csv"):
     raw = open(filename).read()
     f = open(filename, "w")
     f.close()
@@ -71,7 +73,7 @@ def convert_to_datatimes():
                 inserted = True
 
         if not inserted:
-            dt = DataTimes(dp.catagory, int(dp.time)-(int(dp.time)%300), (int(dp.time)-(int(dp.time)%300)) + 300)
+            dt = DataTimes(dp.catagory, int(dp.time)-(int(dp.time)%BLOCK_SIZE), (int(dp.time)-(int(dp.time)%BLOCK_SIZE)) + BLOCK_SIZE)
             dt.insert(dp.value)
             datatimes.append(dt)
 
