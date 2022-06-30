@@ -58,7 +58,7 @@ def log_message(filename="log.csv"):
 server_address = "maxli.gay"
 client = mqtt.Client()
 #client.username_pw_set("maxli", password="mellon")
-#client.tls_set(ca_certs="/home/maxli/cacert.pem")
+client.tls_set(ca_certs="/home/maxli/cacert.pem")
 #client.tls_set(ca_certs="C:\\Users\\Maxli\\Documents\\cacert.pem")
 
 client.on_connect = on_connect

@@ -48,7 +48,7 @@ names = {
     "/temp/11":"Basement"
 }
 
-def readFile(filename="log.csv"):
+def readFile(filename="//home//maxli//weather-api//log.csv"):
     raw = open(filename).read()
     f = open(filename, "w")
     f.close()
@@ -83,7 +83,7 @@ def save_to_disk():
     start = min([i.start for i in datatimes])
     end = max([i.end for i in datatimes])
 
-    filename = f"summaries//{start}-{end}.csv"
+    filename = f"//home//maxli//weather-api//summaries//{start}-{end}.csv"
 
     f = open(filename, 'w')
     for dt in datatimes:
