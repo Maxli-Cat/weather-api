@@ -1,4 +1,5 @@
 import time, datetime
+import platform
 
 BLOCK_SIZE = 30
 
@@ -83,8 +84,10 @@ def save_to_disk():
     start = min([i.start for i in datatimes])
     end = max([i.end for i in datatimes])
 
-    #filename = f"//home//maxli//weather-api//summaries//{start}-{end}.csv"
-    filename = f"summaries//{start}-{end}.csv"
+    if platform.system() == "Windows":
+        filename = f"summaries//{start}-{end}.csv"
+    else:
+        filename = f"//home//maxli//weather-api//summaries//{start}-{end}.csv"
 
     f = open(filename, 'w')
     for dt in datatimes:
