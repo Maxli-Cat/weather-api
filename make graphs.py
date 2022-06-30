@@ -13,6 +13,7 @@ def get_all_filenames(path=None):
         if platform.system() == "Windows": path="summaries\\"
         else: path = "//home//maxli//weather-api//summaries"
     names = [f"{path}{name}" for name in os.listdir(path) if os.path.isfile(f"{path}{name}")]
+    print(f"{names=}")
     return names
 
 def get_bounded_filenames(start, end, path=None):
