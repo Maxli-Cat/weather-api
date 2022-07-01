@@ -1,10 +1,13 @@
 from matplotlib import pyplot as plt
+from matplotlib import dates as mdates
 from collections import defaultdict
 import datetime
 import os
 import sys
 import platform
 import time
+
+myFmt = mdates.DateFormatter("%H:%M")
 
 locations = defaultdict(lambda :[])
 filenames = []
@@ -42,6 +45,7 @@ def make_graph(filename = None):
         plt.plot(*spt, label=location)
     plt.xticks(rotation=90)
     plt.grid(axis='y')
+    plt.gca().xaxis.set_major_formatter(myFmt)
     plt.legend()
 
     if filename is None:
@@ -59,6 +63,7 @@ def make_bounded_graph(start, end, filename=None):
         plt.plot(*spt, label=location)
     plt.xticks(rotation = 90)
     plt.grid(axis='y')
+    plt.gca().xaxis.set_major_formatter(myFmt)
     plt.legend()
 
     if filename is None:
