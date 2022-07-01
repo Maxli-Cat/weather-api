@@ -45,7 +45,7 @@ datatimes = []
 
 names = {
     "/temp/03":"Loft",
-    "/temp/04":"Kitchen",
+    "/temp/12":"Kitchen",
     "/temp/11":"Basement"
 }
 
