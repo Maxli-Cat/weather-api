@@ -46,7 +46,8 @@ datatimes = []
 names = {
     "/temp/03":"Loft",
     "/temp/12":"Kitchen",
-    "/temp/11":"Basement"
+    "/temp/11":"Basement",
+    "/temp/04":"Barn"
 }
 
 def readFile(filename="//home//maxli//weather-api//log.csv"):
