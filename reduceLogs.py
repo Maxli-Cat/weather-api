@@ -50,6 +50,7 @@ names = {
 }
 
 def readFile(filename="//home//maxli//weather-api//log.csv"):
+    print(filename)
     raw = open(filename).read()
     f = open(filename, "w")
     f.close()
@@ -96,6 +97,9 @@ def save_to_disk():
 
 
 if __name__ == "__main__":
-    readFile("log.csv")
+    if platform.system() == "Windows":
+        readFile("log.csv")
+    else:
+        readFile()
     convert_to_datatimes()
     save_to_disk()
