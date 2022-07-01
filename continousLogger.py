@@ -1,3 +1,4 @@
+import platform
 import time
 import paho.mqtt.client as mqtt
 import paho.mqtt.publish as publish
@@ -58,8 +59,11 @@ def log_message(filename="log.csv"):
 server_address = "maxli.gay"
 client = mqtt.Client()
 #client.username_pw_set("maxli", password="mellon")
-client.tls_set(ca_certs="/home/maxli/cacert.pem")
-#client.tls_set(ca_certs="C:\\Users\\Maxli\\Documents\\cacert.pem")
+
+if platform.system() == "Windows":
+    client.tls_set(ca_certs="C:\\Users\\Maxli\\Documents\\cacert.pem")
+else:
+    client.tls_set(ca_certs="/home/maxli/cacert.pem")
 
 client.on_connect = on_connect
 client.on_message = on_message
