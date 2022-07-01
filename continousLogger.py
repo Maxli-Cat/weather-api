@@ -26,7 +26,7 @@ class Datum:
     def logable(self):
         return f"{self.timestamp},{self.catagory},{self.value}\n"
 
-topics = ["Heardbeat","/temp/03","/temp/04","/temp/11"]
+topics = ["Heardbeat","/temp/03","/temp/04","/temp/11","/temp/12"]
 messages = queue.Queue()
 
 def on_connect(client, userdata, flags, rc):
