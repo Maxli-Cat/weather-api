@@ -47,7 +47,8 @@ names = {
     "/temp/03":"Loft",
     "/temp/12":"Kitchen",
     "/temp/11":"Basement",
-    "/temp/04":"Barn"
+    "/temp/04":"Barn",
+    "/temp/02":"Outside"
 }
 
 def readFile(filename="//home//maxli//weather-api//log.csv"):
