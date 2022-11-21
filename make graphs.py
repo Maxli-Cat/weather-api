@@ -8,6 +8,7 @@ import platform
 import time
 
 myFmt = mdates.DateFormatter("%H:%M")
+lngFmt = mdates.DateFormatter("%m/%d\n%H:%M")
 
 locations = defaultdict(lambda :[])
 filenames = []
@@ -105,4 +106,4 @@ if __name__ == "__main__":
         end = datetime.datetime.fromtimestamp(end)
         make_bounded_graph(start, end, filename)
     else:
-        make_graph(filename)
+        make_graph()
